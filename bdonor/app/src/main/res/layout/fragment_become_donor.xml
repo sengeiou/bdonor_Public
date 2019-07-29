@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.sq.sohel.blooddonor.ui.becomeDonor.becomeHero.HeroViewModel" />
+
+
+        <import type="com.sq.sohel.blooddonor.R"/>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="1dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="65dp">
+
+                    <ImageView
+                        android:id="@+id/becomeDonorImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:scaleType="fitCenter"
+                        app:imageData="@{viewModel.imageData}"
+                        app:imageUrl="@{viewModel.imageUrl}"
+                        app:defaultImage="@{`default_avatar`}"
+                        tools:src="@drawable/default_avatar" />
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fillViewport="true">
+
+                        <TableLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:stretchColumns="1">
+
+                            <TableRow
+                                android:id="@+id/tableRow1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Name" />
+
+                                <EditText
+                                    android:id="@+id/become_donor_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@={viewModel.name}"
+                                    app:validateValue="@{viewModel.name}"
+                                    app:validationKey="@{`name`}"
+                                    app:validationMessage="@{R.string.NameRequired}"
+                                    app:validationMessageOrder="@{`1`}"
+                                    />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tableRow2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Email" />
+
+                                <EditText
+                                    android:id="@+id/become_donor_email_address"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@={viewModel.email}"
+                                    app:validateValue="@{viewModel.email}"
+                                    app:validationKey="@{`email`}"
+                                    app:validationMessage="@{R.string.EmailRequired}"
+                                    app:validationMessageOrder="@{`2`}"
+                                     />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tableRow3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/txtPhoneDetect"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="false"
+                                    android:text="Phone no." />
+
+                                <EditText
+                                    android:id="@+id/txtPhoneNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@={viewModel.contactNumber}"
+                                    android:inputType="phone"
+                                    app:validateValue="@{viewModel.contactNumber}"
+                                    app:validationKey="@{`contactNumber`}"
+                                    app:validationMessage="@{R.string.PhoneNoRequired}"
+                                    app:validationMessageOrder="@{`3`}"
+                                     />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tableRow4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Blood group" />
+
+                                <Spinner
+                                    android:id="@+id/txtBloodGroup"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="false"
+                                    android:textAlignment="center"
+                                    app:entries="@{viewModel.bloodGroupList}"
+                                    android:text="@={viewModel.bloodType}"/>
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tableRow5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Date of birth" />
+
+                                <EditText
+                                    android:id="@+id/txtdob"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:clickable="true"
+                                    android:focusable="false"
+                                    android:inputType="none"
+                                    android:text="@={viewModel.dOB}"
+                                    app:validateValue="@{viewModel.dOB}"
+                                    app:validationKey="@{`dOB`}"
+                                    app:validationMessage="@{R.string.DateOfBirthRequired}"
+                                    app:validationMessageOrder="@{`4`}"
+                                     />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tableRow6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Gender" />
+
+                                <Spinner
+                                    android:id="@+id/txtGender"
+                                    android:layout_width="wrap_content"
+                                    android:focusable="false"
+                                    app:entries="@{viewModel.genderList}"
+                                    android:text="@={viewModel.gender}"
+                                    />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tableRow7"
+                                android:minHeight="100px">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:minHeight="100px"
+                                    android:text="Last donation" />
+
+                                <EditText
+                                    android:id="@+id/txtLastDonationDate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:clickable="true"
+                                    android:focusable="false"
+                                    android:inputType="none"
+                                    android:text="@={viewModel.lastDonationDate}" />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tableRow8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/txtAddressDetect"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Address" />
+
+
+                                <EditText
+                                    android:id="@+id/txtAddress"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@={viewModel.address}"
+                                    app:validateValue="@{viewModel.address}"
+                                    app:validationKey="@{`address`}"
+                                    app:validationMessage="@{R.string.AddressRequired}"
+                                    app:validationMessageOrder="@{`5`}"
+                                    />
+                            </TableRow>
+                            <!--app:validationMessage="@{android:string/AddressRequired}"-->
+                            <TableRow
+                                android:id="@+id/tableRow9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <!--<TextView-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:text="City" />-->
+                                <TextView
+                                    android:id="@+id/txtCityDetect"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="City" />
+
+                                <EditText
+                                    android:id="@+id/txtCity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="false"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="none"
+                                    android:maxLines="1"
+                                    android:text="@={viewModel.city}"
+                                    android:textIsSelectable="true"
+                                    />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tableRow10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/txtCountryDetect"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Country" />
+
+
+
+                                <EditText
+                                    android:id="@+id/txtCountry"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="false"
+                                    android:imeOptions="actionNext"
+                                    android:inputType="none"
+                                    android:maxLines="1"
+                                    android:text="@={viewModel.country}"
+                                    android:textIsSelectable="true" />
+
+                            </TableRow>
+
+                        </TableLayout>
+
+                    </ScrollView>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="50dp">
+
+                    <Button
+                        android:id="@+id/btnLater"
+                        style="@style/Button.Action.Negative"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:onClick="@{() -> viewModel.onCancelClick()}"
+                        android:text="@string/cancel" />
+
+                    <Button
+                        android:id="@+id/btnSubmit"
+                        style="@style/Button.Action.Positive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:onClick="@{() -> viewModel.onSubmitClick()}"
+                        android:text="@string/submit" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

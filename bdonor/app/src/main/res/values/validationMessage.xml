@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="NameRequired">Name is required</string>
+    <string name="EmailRequired">Email is required</string>
+    <string name="EmailFormatRequired">Valid email address required</string>
+
+    <string name="PasswordRequired">Password is required</string>
+    <string name="ConfirmPasswordRequired">Confirm password is required</string>
+    <string name="PasswordMatchRequired">Password and confirm password should be match</string>
+
+    <string name="PhoneNoRequired">Phone No. is required</string>
+    <string name="PhoneFormatRequired">Valid phone no. required</string>
+
+    <string name="DateOfBirthRequired">Date of birth is required</string>
+    <string name="AddressRequired">Address is required</string>
+    <string name="BloodNeedDateRequired">Please enter when need</string>
+
+</resources>

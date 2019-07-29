@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+
+        <item
+            android:id="@+id/navItemBecomeDonor"
+            android:checked="true"
+            android:icon="@drawable/default_avatar"
+            android:title="@string/becomeDonor" />
+        <item
+            android:id="@+id/navItemAddDonor"
+            android:checked="true"
+            android:icon="@drawable/add_donor"
+            android:title="@string/addDonor" />
+        <item
+            android:id="@+id/navItemAdvanceSearch"
+            android:checked="true"
+            android:icon="@drawable/ic_rss_symbol"
+            android:title="@string/advanceSearch" />
+
+        <item
+            android:id="@+id/navAllRequestOfBlood"
+            android:checked="true"
+            android:icon="@drawable/ic_info_24px"
+            android:title="@string/allRequestOfBlood" />
+        <item
+            android:id="@+id/navMyAllRequestOfBlood"
+            android:checked="true"
+            android:icon="@drawable/ic_info_24px"
+            android:title="@string/myAllRequestOfBlood" />
+        <item
+            android:id="@+id/navnewRequestForBlood"
+            android:checked="true"
+            android:icon="@drawable/ic_info_24px"
+            android:title="@string/newRequestForBlood" />
+        <item
+            android:id="@+id/navItemAbout"
+            android:checked="true"
+            android:icon="@drawable/ic_info_24px"
+            android:title="@string/about" />
+        <item
+            android:id="@+id/navItemRateUs"
+            android:checked="true"
+            android:icon="@drawable/ic_star"
+            android:title="@string/rate_us" />
+        <item
+            android:id="@+id/navItemLogout"
+            android:checked="true"
+            android:icon="@drawable/ic_power_settings_new_24px"
+            android:title="@string/logout" />
+    </group>
+</menu>

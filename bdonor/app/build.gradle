@@ -1,0 +1,182 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword 'Sayem@123'
+            //storeFile file('/work/bdonor/KeyStore/KS.jks')
+            storeFile file('../KeyStore/KS.jks')
+            storePassword 'Sayem@123'
+        }
+    }
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.sq.sohel.blooddonor"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+    }
+    buildTypes {
+        debug {
+            buildConfigField("String", "XPTO_BASE", "\"http://172.16.40.104:5000\"")
+            buildConfigField("String", "ONION_BASE", "\"http://172.16.40.104:5001\"")
+            //buildConfigField("String", "XPTO_BASE", "\"https://xpto.bigbarta.com\"")
+            //buildConfigField("String", "ONION_BASE", "\"https://onion.bigbarta.com\"")
+            //buildConfigField("String", "CLIENT_ID", "\"DonorApp\"")
+            //buildConfigField("String", "CLIENT_SECRET", "\"VcSwJ0LIJS3Ye158loFI68mMpZs3/LitLC77gaHwKys=\"")
+            buildConfigField("String", "CLIENT_ID", "\"Admin\"")
+            buildConfigField("String", "CLIENT_SECRET", "\"ubd8uu/chry6DmD15AOb3q/Wqk7Nbj3kOkTmZVT2SR8=\"")
+            buildConfigField("String", "UUID", "\"donor@bigbarta.com\"")
+            buildConfigField("String", "UUPD", "\"YY3bpu@GRqG?JbKvPLi=h(\"")
+            buildConfigField("String", "COMUID", "\"Donor App\"")
+            buildConfigField("String", "COMUGID", "\"E69DD510-9855-418B-4DF8-08D6EE56E8F4\"")
+            buildConfigField("String", "GRANTTYPE", "\"password\"")
+            buildConfigField("String", "RESOPONSETYPE", "\"token\"")
+            buildConfigField("String", "SCOPE", "\"XPTOApi\"")
+            buildConfigField("boolean", "dEBUG", "true")
+            buildConfigField ("boolean", "rELEASE", "false")
+            signingConfig signingConfigs.config
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "XPTO_BASE", "\"https://xpto.bigbarta.com\"")
+            buildConfigField("String", "ONION_BASE", "\"https://onion.bigbarta.com\"")
+            //buildConfigField("String", "CLIENT_ID", "\"DonorApp\"")
+            //buildConfigField("String", "CLIENT_SECRET", "\"VcSwJ0LIJS3Ye158loFI68mMpZs3/LitLC77gaHwKys=\"")
+            buildConfigField("String", "CLIENT_ID", "\"Admin\"")
+            buildConfigField("String", "CLIENT_SECRET", "\"ubd8uu/chry6DmD15AOb3q/Wqk7Nbj3kOkTmZVT2SR8=\"")
+            buildConfigField("String", "UUID", "\"donor@bigbarta.com\"")
+            buildConfigField("String", "UUPD", "\"YY3bpu@GRqG?JbKvPLi=h(\"")
+            buildConfigField("String", "COMUID", "\"Donor App\"")
+            buildConfigField("String", "COMUGID", "\"E69DD510-9855-418B-4DF8-08D6EE56E8F4\"")
+            buildConfigField("String", "GRANTTYPE", "\"password\"")
+            buildConfigField("String", "RESOPONSETYPE", "\"token\"")
+            buildConfigField("String", "SCOPE", "\"XPTOApi\"")
+            buildConfigField("boolean", "dEBUG", "false")
+            buildConfigField ("boolean", "rELEASE", "true")
+            signingConfig signingConfigs.config
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // android support libraries
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:support-vector-drawable:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:animated-vector-drawable:$rootProject.supportLibraryVersion"
+
+    // network
+    implementation "com.amitshekhar.android:rx2-android-networking:$rootProject.rx2FastAndroidNetworking"
+
+    // database
+    implementation "android.arch.persistence.room:rxjava2:$rootProject.roomDatabase"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomDatabase"
+
+    // font
+    implementation "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"
+
+    // image
+    //implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    implementation("com.github.bumptech.glide:glide:$rootProject.glideVersion") {
+        exclude group: "com.android.support"
+    }
+    implementation "com.android.support:support-fragment:$rootProject.supportLibraryVersion"
+
+    // parser
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+
+    // debug database
+    //debugImplementation "com.amitshekhar.android:debug-db:$rootProject.debugDBVersion"
+
+    // dependency injection
+    implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
+
+    // reactive
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+
+    // swipe view
+
+    //implementation "com.mindorks:placeholderview:$rootProject.placeholderviewVersion"
+
+    // logger
+    implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
+
+    // dependencies for local unit tests
+    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    testAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    // UI Testing
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
+    androidTestImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    // view model
+    implementation "android.arch.lifecycle:extensions:$rootProject.lifecycle"
+    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycle"
+
+    //Google
+    // Google Play services Auth split
+    implementation 'com.google.android.gms:play-services-auth:16.0.0'
+    implementation 'com.google.firebase:firebase-core:16.0.5'
+
+    implementation('com.google.apis:google-api-services-people:v1-rev4-1.22.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+
+    implementation('com.google.api-client:google-api-client:1.22.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation('com.google.api-client:google-api-client-android:1.23.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation('com.google.http-client:google-http-client-gson:1.23.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation("com.google.android.gms:play-services-maps:16.0.0") {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation("com.google.android.gms:play-services-location:16.0.0") {
+        exclude group: 'org.apache.httpcomponents'
+    }
+//    implementation ("org.apache.commons:commons-text:1.6"){
+//        exclude group: 'org.apache.httpcomponents'
+//    }
+    //implementation 'commons-codec:commons-codec:1.8'
+    implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
+
+
+}
+
+configurations.all {
+    resolutionStrategy.force "com.android.support:support-annotations:$supportLibraryVersion"
+    resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+}
+
+apply plugin: 'com.google.gms.google-services'

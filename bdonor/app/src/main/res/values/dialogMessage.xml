@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="internetNotFound">No internet connection. Make sure Wi-Fi or Mobile data is turned on, then try again.</string>
+</resources>
